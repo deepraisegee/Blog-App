@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    env_file:
+      - ./.env
+    volumes:
+      - .:/app
+    environment:
+      FLASK_APP: run
+      FLASK_ENV: production
+    expose:
+      - "8000"
+    ports:
+      - "8000:8000"
+    command: sh -c "gunicorn --bind 0.0.0.0:8000 main:app"

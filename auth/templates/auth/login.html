@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, inital-scale=1.0" />
+    <title>Login | Blog-App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('auth.static', filename='auth/css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="login_container">
+        <div class="login_title">
+          <div class="form">
+            <form action="#" class="sub_form">
+              <div class="upper-form">
+                <h2>Welcome Back Learner!</h2>
+                <label>Username</label> <br />
+                <input type="text" name="username" /> <br />
+                <label>Password</label> <br />
+                <input type="password" name="password" /> <br />
+                <div class="btn">
+                  <button type="submit">Login</button> <br />
+                </div>
+              </div>
+              <div class="bottom_form">
+                <div class="no-accoun">Don't have an account?</div>
+                <a href="#" class="register">Register</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

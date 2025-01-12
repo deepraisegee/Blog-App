@@ -1,4 +1,8 @@
 Flask
-python-decouple
+python-dotenv
 gunicorn
 requests
+psycopg2-binary
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-Login

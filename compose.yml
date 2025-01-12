@@ -5,11 +5,41 @@ services:
       - ./.env
     volumes:
       - .:/app
-    environment:
-      FLASK_APP: run
-      FLASK_ENV: production
-    expose:
-      - "8000"
     ports:
       - "8000:8000"
     command: sh -c "gunicorn --bind 0.0.0.0:8000 main:app"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:17
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_HOST=$DB_HOST
+      - POSTGRES_USER=$DB_USER
+      - POSTGRES_NAME=$DB_NAME
+      - POSTGRES_PORT=$DB_PORT
+      - POSTGRES_PASSWORD=$DB_PASSWORD
+    env_file:
+      - ./.env
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "$DB_USER"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  proxy:
+    container_name: nginx-server
+    build: ./config/nginx/local/
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./config/nginx/local/:/etc/nginx/conf.d/:ro
+    depends_on:
+      - app
+
+volumes:
+  postgres_data:

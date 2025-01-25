@@ -1,0 +1,13 @@
+Flask
+Flask-WTF
+Flask-Login
+Flask-Mail
+Flask-Bcrypt
+Flask-SQLAlchemy
+pillow
+python-dotenv
+psycopg2-binary
+gunicorn
+email-validator
+flask-ckeditor
+bleach
